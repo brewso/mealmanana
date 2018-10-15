@@ -1,30 +1,38 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import database from './database'; // sub for meal db atm
+
 import './App.css';
 
-//sub for meal db atm
-const meals = ["bacon", "sandwich", "pizza"]
+const { days, meals } = database();
+const getMealsForDate = date => days.filter(day => day.date === date);
 
 //rough skeleton for layout
 const App = () => (
   <div className="App">
     <div className="Calendar">
       <header className="Calendar-header">
-        <button>Week</button>
-        <h1>Meal Manana</h1>
-        <button>Add Meal</button>
+        <div className="Brand">
+          <h1>Meal Ma&#241;ana</h1>
+        </div>
       </header>
-      <div className="Day">
-        {meals.map((meal) => (
-          <li key={meal} className="Meal">
-            {meal}
-          </li>
+      <div className="Calendar-navigation">
+        <button>Week</button>
+        <button>Add Meal</button>
+      </div>
+      <div className="Calendar-day">
+        {getMealsForDate("2018-10-14").map((meal) => (
+          <ul>
+            {meal.label}
+            <li key={meals[meal.meal].id} className="Meal">
+              {meals[meal.meal].name}
+            </li>
+          </ul>
         ))}
       </div>
       <footer className="Calendar-footer">
-        <button>Today</button>
-        <button>Shopping List</button>
-        <button>Tomorrow</button>
+        <button type="button">Today</button>
+        <button type="button">Shopping List</button>
+        <button type="button">Tomorrow</button>
       </footer>
     </div>
   </div>

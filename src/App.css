@@ -1,41 +1,54 @@
 .Calendar {
   display: grid;
-  grid-template-columns: 5% 90% 5%;
-  grid-template-rows: 30% 50% 20%;
+  grid-template-rows: 40px 20px 1fr 20px;
+  grid-gap: 10px;
+  height: 100vh;
 }
 
 .Calendar-header {
-  grid-column: 2;
+  display: grid;
+  grid-gap: 10px;
   grid-row: 1;
+  grid-auto-flow: row;
   background-color: #282c34;
-  display: -webkit-inline-box;
-  flex-direction: column;
   text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.Day {
-  grid-column: 2;
+.Calendar-navigation {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 10px;
   grid-row: 2;
+  padding: 0 10px;
+}
+
+.Calendar-day {
+  display: grid;
+  grid-row: 3;
+  padding: 0 10px;
 }
 
 .Calendar-footer {
-  grid-column: 2;
-  grid-row: 3;
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-flow: column;
+  grid-row: 4;
+  padding: 0 10px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.App {
+  height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App button {
+  border-color: #000;
+  background-color: #fff;
+}
+
+.App h1 {
+  margin: 0;
+  padding: 0;
 }
