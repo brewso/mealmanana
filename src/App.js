@@ -2,27 +2,32 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+//sub for meal db atm
+const meals = ["bacon", "sandwich", "pizza"]
+
+//rough skeleton for layout
+const App = () => (
+  <div className="App">
+    <div className="Calendar">
+      <header className="Calendar-header">
+        <button>Week</button>
+        <h1>Meal Manana</h1>
+        <button>Add Meal</button>
+      </header>
+      <div className="Day">
+        {meals.map((meal) => (
+          <li key={meal} className="Meal">
+            {meal}
+          </li>
+        ))}
       </div>
-    );
-  }
-}
+      <footer className="Calendar-footer">
+        <button>Today</button>
+        <button>Shopping List</button>
+        <button>Tomorrow</button>
+      </footer>
+    </div>
+  </div>
+)
 
 export default App;
