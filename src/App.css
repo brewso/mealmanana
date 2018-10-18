@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .Calendar {
   display: grid;
   grid-template-rows: 40px 20px 1fr 20px;
@@ -27,6 +31,7 @@
 
 .Calendar-day {
   display: grid;
+  align-content: center;
   grid-row: 3;
   padding: 0 10px;
 }
@@ -39,11 +44,61 @@
   padding: 0 10px 10px;
 }
 
+.Meal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #aaa;
+  min-height: 150px;
+  font-size: 5em;
+  color: inherit;
+  text-decoration: none;
+  background: #ddd;
+}
+
+  .Meal:focus + .mealDescription {
+    width: 100%;
+    max-height: 100%;
+    transition: max-height 0.4s ease-in;
+  }
+
+.mealDescription {
+  max-height: 0;
+  overflow: hidden;
+  border: 1px solid #000;
+  background: #aaa;
+  transition: max-height 0.15s ease-in;
+
+  div {
+    padding: 2em;
+    box-shadow: inset 0 0 2px #000;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .list {
+    display: grid;
+    grid-template-areas:
+      "item item item"
+      "desc desc desc";
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .mealDescription {
+    grid-area: desc;
+  }
+}
+
 .App {
   height: 100vh;
 }
 
-.App button {
+li {
+  list-style-type: none;
+}
+
+button {
   border-color: #000;
   background-color: #fff;
 }

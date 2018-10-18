@@ -3,8 +3,9 @@ import database from './database'; // sub for meal db atm
 
 import './App.css';
 
-const { days, meals } = database();
+const { days, meals, food } = database();
 const getMealsForDate = date => days.filter(day => day.date === date);
+var i = 1;
 
 //rough skeleton for layout
 const App = () => (
@@ -21,12 +22,13 @@ const App = () => (
       </div>
       <div className="Calendar-day">
         {getMealsForDate("2018-10-14").map((meal) => (
-          <ul>
-            {meal.label}
-            <li key={meals[meal.meal].id} className="Meal">
+          <li className="list">
+            <p>{meal.label}</p>
+            <button key={meals[meal.meal].id} className="Meal" tabIndex={i++}>
               {meals[meal.meal].name}
-            </li>
-          </ul>
+            </button>
+            <div className="mealDescription"><div>{food[meals[meal.meal].name].recipe}</div></div>
+          </li>
         ))}
       </div>
       <footer className="Calendar-footer">
